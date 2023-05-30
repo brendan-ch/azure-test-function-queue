@@ -9,11 +9,9 @@ if (process.env.NODE_ENV !== 'production') {
 const timerTrigger: AzureFunction = async function (context: Context, myTimer: any): Promise<void> {
     const timeStamp = new Date().toISOString();
 
-    console.log(process.env.NODE_ENV);
-    console.log(process.env.CONNECTION_STRING);
     if (myTimer.isPastDue)
     {
-        context.log('Timer function is running late!');
+        context.log('Enqueue function is running late!');
     }
 
     const serviceClient = QueueServiceClient.fromConnectionString(process.env.CONNECTION_STRING);
@@ -33,17 +31,7 @@ const timerTrigger: AzureFunction = async function (context: Context, myTimer: a
     });
     console.log(response.peekedMessageItems);
     
-    if (response.peekedMessageItems.length > 3) {
-        // Dequeue the item in the front
-        const retrieved = await queueClient.receiveMessages({
-            numberOfMessages: 1,
-        });
-        
-        console.log('Dequeueing first message item');
-        console.log(retrieved.receivedMessageItems);
-    }
-    
-    context.log('Timer trigger function ran!', timeStamp);   
+    context.log('Enqueue function ran!', timeStamp);   
 };
 
 export default timerTrigger;

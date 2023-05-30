@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "name": "dequeueTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 1/2 * * * *"
+    }
+  ],
+  "scriptFile": "../dist/dequeue-testing/index.js"
+}

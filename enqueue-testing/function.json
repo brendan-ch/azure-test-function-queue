@@ -1,0 +1,11 @@
+{
+  "bindings": [
+    {
+      "name": "enqueueTimer",
+      "type": "timerTrigger",
+      "direction": "in",
+      "schedule": "0 */2 * * * *"
+    }
+  ],
+  "scriptFile": "../dist/enqueue-testing/index.js"
+}
